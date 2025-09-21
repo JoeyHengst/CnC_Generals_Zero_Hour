@@ -1,0 +1,24 @@
+{
+    "FileVersion": 3,
+    "Version": 1,
+    "VersionName": "0.1.0",
+    "FriendlyName": "SageFrame: RTS Framework",
+    "Description": "A plugin to recreate the core mechanics of the SAGE engine for large-scale RTS games.",
+    "Category": "Gameplay",
+    "CreatedBy": "Jules",
+    "CreatedByURL": "",
+    "DocsURL": "",
+    "MarketplaceURL": "",
+    "SupportURL": "",
+    "CanContainContent": true,
+    "IsBetaVersion": true,
+    "IsExperimentalVersion": false,
+    "Installed": false,
+    "Modules": [
+        {
+            "Name": "SageFrame",
+            "Type": "Runtime",
+            "LoadingPhase": "Default"
+        }
+    ]
+}
