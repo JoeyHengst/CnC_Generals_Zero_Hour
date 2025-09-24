@@ -1,0 +1,13 @@
+﻿# Unreal
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+*.VC.db
+*.opendb
+
+# IDE/user junk
+.vscode/
+.vs/
+.idea/
+*.sln.iml
