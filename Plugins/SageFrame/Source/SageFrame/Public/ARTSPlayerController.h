@@ -21,11 +21,6 @@ class SAGEFRAME_API ARTSPlayerController : public APlayerController
 public:
 	ARTSPlayerController();
 
-protected:
-	virtual void BeginPlay() override;
-	virtual void SetupInputComponent() override;
-	virtual void Tick(float DeltaTime) override;
-
 	//~==============================================================================================
 	//~ Input
 	//~==============================================================================================
@@ -49,15 +44,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Input|Actions")
 	TObjectPtr<class UInputAction> IA_Command;
 
-	//~ Begin Input Action Handlers
-	void HandleCameraPan(const FInputActionValue& Value);
-	void HandleCameraRotate(const FInputActionValue& Value);
-	void HandleCameraZoom(const FInputActionValue& Value);
-	void HandleSelect(const FInputActionValue& Value);
-	void HandleCommand(const FInputActionValue& Value);
-	//~ End Input Action Handlers
-
-private:
+	/** The list of actors currently selected by the player. */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Selection")
+	TArray<TObjectPtr<AActor>> CurrentlySelectedActors;
 
 	//~==============================================================================================
 	//~ Camera Controls
@@ -75,11 +64,20 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Camera")
 	float CameraZoomSpeed = 500.0f;
 
+protected:
+	virtual void BeginPlay() override;
+	virtual void SetupInputComponent() override;
+	virtual void Tick(float DeltaTime) override;
+
+	//~ Begin Input Action Handlers
+	void HandleCameraPan(const FInputActionValue& Value);
+	void HandleCameraRotate(const FInputActionValue& Value);
+	void HandleCameraZoom(const FInputActionValue& Value);
+	void HandleSelect(const FInputActionValue& Value);
+	void HandleCommand(const FInputActionValue& Value);
+	//~ End Input Action Handlers
+
 	/** The pawn that provides the camera movement behavior. */
 	UPROPERTY()
 	TObjectPtr<APawn> PossessedPawn;
-
-	/** The list of actors currently selected by the player. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Selection")
-	TArray<TObjectPtr<AActor>> CurrentlySelectedActors;
 };
